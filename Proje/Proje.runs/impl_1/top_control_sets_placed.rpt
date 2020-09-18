@@ -1,0 +1,82 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Sat Dec 28 16:52:16 2019
+| Host         : Meric running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
+| Design       : top
+| Device       : xc7a100t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    13 |
+| Unused register locations in slices containing registers |    19 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      2 |            1 |
+|      3 |            1 |
+|      6 |            1 |
+|      8 |            2 |
+|     12 |            1 |
+|    16+ |            7 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              54 |           18 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              17 |            8 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              78 |           20 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+----------------------------+----------------------------+------------------+----------------+
+|  Clock Signal  |        Enable Signal       |      Set/Reset Signal      | Slice Load Count | Bel Load Count |
++----------------+----------------------------+----------------------------+------------------+----------------+
+|  clk_IBUF_BUFG | picoblaze/flag_enable      | picoblaze/I1               |                1 |              2 |
+|  clk_IBUF_BUFG |                            | picoblaze/active_interrupt |                1 |              3 |
+|  clk_IBUF_BUFG |                            | picoblaze/I1               |                3 |              6 |
+|  clk_IBUF_BUFG |                            | inst_mem/instruction[7]    |                4 |              8 |
+|  clk_IBUF_BUFG | picoblaze/spm_enable       |                            |                2 |              8 |
+|  clk_IBUF_BUFG | picoblaze/t_state_0        | picoblaze/I1               |                3 |             12 |
+|  clk_IBUF_BUFG | c100/sel                   | c100/counter[0]_i_1_n_0    |                4 |             16 |
+|  clk_IBUF_BUFG | c200/counter[0]_i_2__0_n_0 | c200/counter[0]_i_1__0_n_0 |                4 |             16 |
+|  clk_IBUF_BUFG | c300/counter[0]_i_2_n_0    | c300/counter[0]_i_1__1_n_0 |                4 |             16 |
+|  clk_IBUF_BUFG | c400/counter[0]_i_2__2_n_0 | c400/counter[0]_i_1__2_n_0 |                4 |             16 |
+|  clk_IBUF_BUFG | picoblaze/register_enable  |                            |                2 |             16 |
+|  clk_IBUF_BUFG | picoblaze/t_state_0        |                            |                2 |             16 |
+|  clk_IBUF_BUFG |                            |                            |               18 |             54 |
++----------------+----------------------------+----------------------------+------------------+----------------+
+
+

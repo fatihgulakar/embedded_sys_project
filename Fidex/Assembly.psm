@@ -1,0 +1,59 @@
+#ifDef proc::xPblze6
+
+			#set proc::xPblze6::scrpdSize,				64						; [64, 128, 256]
+			#set proc::xPblze6::clkFreq,				100000000				; in Hz
+			
+			#set IOdev::BRAM0::en,						TRUE
+			#set IOdev::BRAM0::type,					mem
+			#set IOdev::BRAM0::size,					4096
+			
+			#set instmem::pageSize,						4096
+			#set instmem::pageCount,					1
+			#set instmem::sharedMemLocation,			loMem	; [ hiMem, loMem ]
+			
+			#set IOdev::BRAM0::value,					instMem
+			
+			#set IOdev::BRAM0::vhdlEn,					TRUE
+			#set IOdev::BRAM0::vhdlEntityName,			"BRAM0"
+			#set IOdev::BRAM0::vhdlTmplFile,			"ROM_form.vhd"
+			#set IOdev::BRAM0::vhdlTargetFile,			"BRAM0.vhd"
+		#endIf
+
+	
+	INT ENABLE
+	loop:
+	JUMP loop
+	
+	ISR:
+		RDPRT s1, 100
+		
+		COMP s1, 1
+		JUMP Z l100
+		
+		COMP s1, 2
+		JUMP Z l200
+		
+		COMP s1, 3
+		JUMP Z l300
+		
+		COMP s1, 4
+		JUMP Z l400
+		
+		RETI ENABLE
+	
+	l100:
+		LOAD s0, 10
+		RETI ENABLE
+	l200:
+		LOAD s0, 20
+		RETI ENABLE
+	l300:
+		LOAD s0, 30
+		RETI ENABLE
+	l400:
+		LOAD s0, 40
+		RETI ENABLE
+	
+
+	#ORG ADDR, 4095
+	JUMP ISR
